@@ -27,14 +27,14 @@ Os recursos para estilização e componets foram utilizados do Vuetify 3 que seg
 
 ## Rodando o projeto Front-end localmente
 
-> Primeiro passo
+   Primeiro passo
     - baixar o repositorio "front-schedule-financial" na sua máquina local (https://github.com/MiguelAlves12/front-schedule-financial-transfer);
     
-  > Segundo passo
+   Segundo passo
     - entrar pelo pelo terminal no diretório onde foi clonado o projeto e rodar o comando: "npm install"(irá instalar todas as dependências), e depois "npm run dev". E assim, o Front-end vai rodar localmente pela porta 3000;
     OBS.: É necessário ter o Node.js e NPM instalado no seu computador para que os comandos possam ser reconhecidos pelo sistema.
     
-  > Terceiro passo
+   Terceiro passo
     - Após o passo anterior basta entrar no seu navegador e colocar na barra de url: "http://localhost:3000/", 
       onde a tela de login será aberta. Para acessar basta inserir um desses usuários já pré cadastrados na API:
       email: teste@teste.com/senha: 123456, email: teste2@teste.com/senha: 123456, email: teste3@teste.com/senha: 123456.
