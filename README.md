@@ -1,81 +1,42 @@
-# Vuetify (Default)
+# FRONT-END Aplicação de Agendamento de Transferência
 
-This is the official scaffolding tool for Vuetify, designed to give you a head start in building your new Vuetify application. It sets up a base template with all the necessary configurations and standard directory structure, enabling you to begin development without the hassle of setting up the project from scratch.
+Desafio Tokyo Marine - Construir uma aplicação que cadastre a transferência e permita visualização dos agendamentos.
 
-## ❗️ Important Links
+## Tecnologias usadas no projeto
+- Node.js na versão v18.20.2 (LTS). Documentação oficial: https://nodejs.org/en/download.
+- Vue.js 3 na versão vue/cli v5.0.8. Documentação oficial: https://vuejs.org/guide/introduction.html.
+- Vue-Router 4. Documentação oficial: https://router.vuejs.org/installation.html.
+- Pinia. Documentação oficial: https://pinia.vuejs.org/getting-started.html.
+- Vuetify 3. Documentação oficial: https://vuetifyjs.com/en/getting-started/installation/.
 
-- 📄 [Docs](https://vuetifyjs.com/)
-- 🚨 [Issues](https://issues.vuetifyjs.com/)
-- 🏬 [Store](https://store.vuetifyjs.com/)
-- 🎮 [Playground](https://play.vuetifyjs.com/)
-- 💬 [Discord](https://community.vuetifyjs.com)
+OBS.: Vue.js 3, Vue-Router e Pinia podem ser instalados automaticamente na criação do projeto com o Vuetify.
 
-## 💿 Install
+## Arquitetura do Projeto Front-end
 
-Set up your project using your preferred package manager. Use the corresponding command to install the dependencies:
+Sobre a arquitetura do front-end ela se baseia no padrão criado pelo próprio Vuetify 3, onde temos 3 principais diretórios:
+  - "views": diretório com os componentes usados nas rotas para renderizar um ou mais componentes do diretório "components";
+  - "components": diretório que contém os componentes que serão utilizados e reutilizados no projeto;
+  - "routers": diretório com a configuração das rotas do nosso projeto, onde construi uma rota para login ("/") para o usuário se autenticar e ter acesso as rotas "/register-bank-transfer" (rota para cadastrar os agendamentos de transferência)  e "/bank-transfers" (rota para visualizar os agendamentos).
 
-| Package Manager                                                | Command        |
-|---------------------------------------------------------------|----------------|
-| [yarn](https://yarnpkg.com/getting-started)                   | `yarn install` |
-| [npm](https://docs.npmjs.com/cli/v7/commands/npm-install)     | `npm install`  |
-| [pnpm](https://pnpm.io/installation)                          | `pnpm install` |
-| [bun](https://bun.sh/#getting-started)                        | `bun install`  |
+Além disso, temos outras rotas importantes para o funcionamento do projeto, como:
+  - "services": diretório que contém as configurações para consumir a API e também os services de cada endpoint (AuthService, BankAccountService, BankTransferService);
+  - "stores": diretório do Pinia que permite criar variáveis globais para serem utilizadas em mais de um component sem a necessidade de "props". Criei uma variavel "jwt" que armazena o token de autenticação da API, mas que é armazenada no cookie do navegador também;
+  - "utils": diretório que contém interfaces e funções que podem ser usadas um mais de um lugar do projeto. Nesse caso, criei uma função para manipular o token no cookie do navegador e uma interface de usuário.
 
-After completing the installation, your environment is ready for Vuetify development.
+Os recursos para estilização e componets foram utilizados do Vuetify 3 que segue os padrões de UX Design e facilita na produtividade do desenvolvimento do projeto em questão.
 
-## ✨ Features
+## Rodando o projeto Front-end localmente
 
-- 🖼️ **Optimized Front-End Stack**: Leverage the latest Vue 3 and Vuetify 3 for a modern, reactive UI development experience. [Vue 3](https://v3.vuejs.org/) | [Vuetify 3](https://vuetifyjs.com/en/)
-- 🗃️ **State Management**: Integrated with [Pinia](https://pinia.vuejs.org/), the intuitive, modular state management solution for Vue.
-- 🚦 **Routing and Layouts**: Utilizes Vue Router for SPA navigation and vite-plugin-vue-layouts for organizing Vue file layouts. [Vue Router](https://router.vuejs.org/) | [vite-plugin-vue-layouts](https://github.com/JohnCampionJr/vite-plugin-vue-layouts)
-- 💻 **Enhanced Development Experience**: Benefit from TypeScript's static type checking and the ESLint plugin suite for Vue, ensuring code quality and consistency. [TypeScript](https://www.typescriptlang.org/) | [ESLint Plugin Vue](https://eslint.vuejs.org/)
-- ⚡ **Next-Gen Tooling**: Powered by Vite, experience fast cold starts and instant HMR (Hot Module Replacement). [Vite](https://vitejs.dev/)
-- 🧩 **Automated Component Importing**: Streamline your workflow with unplugin-vue-components, automatically importing components as you use them. [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components)
-- 🛠️ **Strongly-Typed Vue**: Use vue-tsc for type-checking your Vue components, and enjoy a robust development experience. [vue-tsc](https://github.com/johnsoncodehk/volar/tree/master/packages/vue-tsc)
+> Primeiro passo
+    - baixar o repositorio "front-schedule-financial" na sua máquina local (https://github.com/MiguelAlves12/front-schedule-financial-transfer);
+    
+  > Segundo passo
+    - entrar pelo pelo terminal no diretório onde foi clonado o projeto e rodar o comando: "npm install"(irá instalar todas as dependências), e depois "npm run dev". E assim, o Front-end vai rodar localmente pela porta 3000;
+    OBS.: É necessário ter o Node.js e NPM instalado no seu computador para que os comandos possam ser reconhecidos pelo sistema.
+    
+  > Terceiro passo
+    - Após o passo anterior basta entrar no seu navegador e colocar na barra de url: "http://localhost:3000/", 
+      onde a tela de login será aberta. Para acessar basta inserir um desses usuários já pré cadastrados na API:
+      email: teste@teste.com/senha: 123456, email: teste2@teste.com/senha: 123456, email: teste3@teste.com/senha: 123456.
+    OBS.: Só será possível fazer login com a API rodando.
 
-These features are curated to provide a seamless development experience from setup to deployment, ensuring that your Vuetify application is both powerful and maintainable.
-
-## 💡 Usage
-
-This section covers how to start the development server and build your project for production.
-
-### Starting the Development Server
-
-To start the development server with hot-reload, run the following command. The server will be accessible at [http://localhost:3000](http://localhost:3000):
-
-```bash
-yarn dev
-```
-
-(Repeat for npm, pnpm, and bun with respective commands.)
-
-> Add NODE_OPTIONS='--no-warnings' to suppress the JSON import warnings that happen as part of the Vuetify import mapping. If you are on Node [v21.3.0](https://nodejs.org/en/blog/release/v21.3.0) or higher, you can change this to NODE_OPTIONS='--disable-warning=5401'. If you don't mind the warning, you can remove this from your package.json dev script.
-
-### Building for Production
-
-To build your project for production, use:
-
-```bash
-yarn build
-```
-
-(Repeat for npm, pnpm, and bun with respective commands.)
-
-Once the build process is completed, your application will be ready for deployment in a production environment.
-
-## 💪 Support Vuetify Development
-
-This project is built with [Vuetify](https://vuetifyjs.com/en/), a UI Library with a comprehensive collection of Vue components. Vuetify is an MIT licensed Open Source project that has been made possible due to the generous contributions by our [sponsors and backers](https://vuetifyjs.com/introduction/sponsors-and-backers/). If you are interested in supporting this project, please consider:
-
-- [Requesting Enterprise Support](https://support.vuetifyjs.com/)
-- [Sponsoring John on Github](https://github.com/users/johnleider/sponsorship)
-- [Sponsoring Kael on Github](https://github.com/users/kaelwd/sponsorship)
-- [Supporting the team on Open Collective](https://opencollective.com/vuetify)
-- [Becoming a sponsor on Patreon](https://www.patreon.com/vuetify)
-- [Becoming a subscriber on Tidelift](https://tidelift.com/subscription/npm/vuetify)
-- [Making a one-time donation with Paypal](https://paypal.me/vuetify)
-
-## 📑 License
-[MIT](http://opensource.org/licenses/MIT)
-
-Copyright (c) 2016-present Vuetify, LLC
